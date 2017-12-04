@@ -26,7 +26,7 @@
                                 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
                                 <Context docBase="프로젝트 경로" path="" reloadable="true">
                                         <Manager className="org.apache.catalina.session.PersistentManager" saveOnRestart="false" />
-                                        <Resource type="javax.sql.DataSource" name="jdbc/ssbrdb" auth="Container" username="root" url="jdbc:mysql://localhost:13306/ssbr?useUnicode=true&amp;characterEncoding=utf8" password="system" maxWait="-1" maxIdle="10" maxActive="20" driverClassName="com.mysql.jdbc.Driver"/>
+                                        <Resource type="javax.sql.DataSource" name="jdbc/ssbrdb" auth="Container" username="root" url="jdbc:mysql://localhost:13306/ssbr?useUnicode=true&amp;characterEncoding=utf8" password="패스워드" maxWait="-1" maxIdle="10" maxActive="20" driverClassName="com.mysql.jdbc.Driver"/>
                                 </Context>
                         </Host>
                 </Engine>
