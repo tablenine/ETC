@@ -4,3 +4,8 @@
 -- ex) dept_rank에 공백값이 있음
 order by dept_name asc, dept_rank = '' ASC, dept_rank asc, name asc;
 ```
+
+#### mysql 시간대역 변경
+``` mysql
+set time_zone = 'Asia/Seoul';
+```
