@@ -24,3 +24,8 @@ date_add(now(), interval 1 day)
 ``` mysql
 date_add(now(), interval -1 hour)
 ```
+
+### varchar형의 숫자 값 정렬
+``` mysql
+order by filedName+0
+```
