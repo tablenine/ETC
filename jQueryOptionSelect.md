@@ -17,6 +17,6 @@ $("#select_id").val("1").prop("selected", true);
 $("#select_id option:eq(0)").prop("selected", true);
 ```
 + attr은 스크립트로 추가된 엘리먼트는 컨트롤 할 수 없습니다.
-때문에 prop을 통해 컨트롤 하시는 것을 권장.
+때문에 prop을 통해 컨트롤 하는 것을 권장.
 
 + [출처](http://blog.freezner.com/archives/1139)
