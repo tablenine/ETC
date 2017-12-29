@@ -29,3 +29,7 @@ date_add(now(), interval -1 hour)
 ``` mysql
 order by filedName+0
 ```
+### 부서별 가장 많이 사용하고 있는 profile 검색
+``` mysql
+select dept, profile_code,count(profile_code) as cnt from user as a group by profile_code, dept order by dept, cnt desc;
+```
