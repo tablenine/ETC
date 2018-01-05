@@ -4,3 +4,8 @@
 ``` 
 sessionCookieName="ADMIN_JSESSIONID"
 ```
+
+### 세션cookiename 변경
+``` xml
+<Context docBase="" path="/" reloadable="false" sessionCookieName="WFM_INT">
+```
