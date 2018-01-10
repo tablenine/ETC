@@ -33,3 +33,41 @@ order by filedName+0
 ``` mysql
 select dept, profile_code,count(profile_code) as cnt from user as a group by profile_code, dept order by dept, cnt desc;
 ```
+
+### mysql event
+#### event 생성
+``` mysql
+DELIMITER $$
+create event test
+ON SCHEDULE EVERY 1 MINUTE STARTS '2017-01-01 00:00:01'
+DO
+BEGIN
+ set @oneminuteAgo = date_add(now(), interval -1 minute);
+ set @oneminuteAgoQueryFormat = date_format(@oneminuteAgo,'%Y-%m-%d %H:%i');
+ set @oneminuteAgoFilePathFormat = date_format(@oneminuteAgo,'%Y%m%d%H%i');
+ set @filePath = concat('/tmp/test/', @oneminuteAgoFilePathFormat, '.log');
+ set @query1 = '실행할 쿼리'
+ 
+ Prepare stmt From @query1; 
+ Execute stmt; 
+ Deallocate Prepare stmt; 
+END $$
+DELIMITER ;
+```
+
+#### event 삭제
+``` mysql
+drop event test;
+```
+
+#### event 확인
+``` mysql
+show variables like 'event%';
+select * from information_schema.EVENTS;
+```
+
+#### event ON/OFF
+``` mysql
+SET GLOBAL event_scheduler = ON;
+SET GLOBAL event_scheduler = OFF;
+```
