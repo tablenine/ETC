@@ -66,3 +66,12 @@ rm -rf /opt/ssbr/3rdparty/%{name}_int
 rm -rf /opt/ssbr/3rdparty/%{name}_ext
 ```
 
+### rpm 파일에 설치 된 파일목록
+``` sh
+rpm -ql rpm이름
+```
+
+### 파일이 어떤 rpm패키지 인지 확인
+``` sh
+rpm -qf 파일이름
+```
