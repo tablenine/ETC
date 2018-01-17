@@ -43,3 +43,12 @@ header("Content-Length: $filesize");
 
 readfile($filepath);
 ```
+### 파일 존재 확인
+```php
+if(file_exists($filepath)) {
+	echo "있음";
+}
+else {
+	echo "없음";
+}
+```
