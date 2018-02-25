@@ -25,13 +25,13 @@ var id = aesUtil.encrypt(salt, iv, passPhrase,  $("input[name=user_id]").val());
 ```
 #### java decode
 ``` java
-	private static final int KEY_SIZE = 128;
-	private static final int ITERATION_COUNT = 10000;
-	private static final String IV = "F27D5C9927726BCEFE7510B1BDD3D137";
-	private static final String SALT = "3FF2EC019C627B945225DEBAD71A01B6985FE84C95A70EB132882F88C0A59A55";
-	private static final String PASSPHRASE = "passPhrase passPhrase aes encoding algorithm";
-	AesUtil util = new AesUtil(KEY_SIZE, ITERATION_COUNT);
-	id = req.getParameter("user_id") != null ? util.decrypt(SALT, IV, PASSPHRASE, req.getParameter("user_id")) : "";
+private static final int KEY_SIZE = 128;
+private static final int ITERATION_COUNT = 10000;
+private static final String IV = "F27D5C9927726BCEFE7510B1BDD3D137";
+private static final String SALT = "3FF2EC019C627B945225DEBAD71A01B6985FE84C95A70EB132882F88C0A59A55";
+private static final String PASSPHRASE = "passPhrase passPhrase aes encoding algorithm";
+AesUtil util = new AesUtil(KEY_SIZE, ITERATION_COUNT);
+id = req.getParameter("user_id") != null ? util.decrypt(SALT, IV, PASSPHRASE, req.getParameter("user_id")) : "";
 ```
 #### AesUtil
 ``` java
