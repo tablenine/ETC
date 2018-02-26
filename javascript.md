@@ -134,6 +134,69 @@ public class AesUtil {
 }
 ```
 
+### java shift encoding/decoding
+#### javascript encode
+``` javascript
+var id = btoa(encodeURIComponent(shiftRight("id").val())));
+var pswd = btoa(encodeURIComponent(shiftRight("pswd").val())));
+
+function shiftLeft(ss) {
+	return shift(ss, rotateLeft);
+}
+
+function shiftRight(ss) {
+	return shift(ss, rotateRight);
+}
+
+function rotateRight(i, distance) {
+	return (i >>> distance) | (i << -distance);
+}
+
+function rotateLeft(i, distance) {
+	return (i << distance) | (i >>> -distance);
+}
+
+function shift(target, shiftFunction) {
+	var targetCharArray = target.split('');
+	var size = targetCharArray.length;
+
+	for (var i = 0; i < size; i++) {
+		targetCharArray[i] = shiftFunction(targetCharArray[i].charCodeAt(0),  (i + 1) % 10);
+	}
+	return targetCharArray.join(":");
+}
+```
+#### java decode
+``` java
+	
+	public static String decodeString(String target) {
+		try {
+			final String ss = URLDecoder.decode(new String(org.apache.commons.codec.binary.Base64.decodeBase64(target.getBytes())), "UTF-8");
+			List<String> targetList = Arrays.asList(ss.split(":"));
+			return shiftLeft(targetList);
+		} catch (UnsupportedEncodingException e) {
+			return "";
+		}
+	}
+
+	private static String shiftLeft(List<String> target) {
+		return shift(target, Integer::rotateLeft);
+	}
+	
+	private static String shift(List<String> target, BiFunction<Integer, Integer, Integer> shiftFunction) {
+		int size = target.size();
+		List<String> resultList = new LinkedList<>(); 
+		for (int i = 0; i < size; i++) {
+			resultList.add(decodeText(target.get(i),shiftFunction, i)); 
+		}
+		return resultList.stream().collect(Collectors.joining());
+	}
+
+	private static String decodeText(String target, BiFunction<Integer, Integer, Integer> shiftFunction, int i) {
+		return String.valueOf((char)((int)shiftFunction.apply(Integer.parseInt(target),  (i + 1) % 10)));
+	}
+```
+
 ### javascript 문자형 숫자 덧셈
 ``` javascript
 var a = "100"
